@@ -1,32 +1,28 @@
 import java.util.Scanner;
 
-class homework3
-{
-    public static void main(String[] args)
-    {
+class homework3 {
 
-        Scanner input = new Scanner(System.in);
-        System.out.print("몇 개의 수를 입력할 예정인가요? ");
-        int n = input.nextInt(); // 입력받을 정수 개수
-        Integer[] arr = new Integer[n]; // 정수 개수 저장
-        System.out.print("수를 입력하세요 : ");
-        for(int i=0;i<arr.length; i++){
-            arr[i]=Integer.parseInt(input.next());
-        }
-        int min = arr[0]; //최소값
-        int max = arr[0]; //최대값
-        for(int i=1; i<arr.length;i++){
-            if(min>arr[i]){
-                min=arr[i];
-            }
-            if(max<arr[i]){
-                max=arr[i];
-            }
-        }
-        System.out.println("최대값:"+max);
-        System.out.println("최소값:"+min);
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("두 수를 입력하세요 : ");  // m,n은 1이상의 정수이고, 두 수 사이에는 최대공약수가 반드시 존재한다.
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+
+        int d = gcd(m, n);	// 최대공약수
+
+        System.out.println("\n두 수의 최대공약수는 " +d +"입니다."); // 최대공약수 출력
+
 
     }
+
+    // 최대공약수 재귀 방식
+    public static int gcd(int m, int n) {
+        if (n == 0)
+            return m;
+
+        // GCD(m,n) = GCD(b, r)이므로 (r = m % n)
+        return gcd(n, m % n);
+    }
 }
-
-
